@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Frontend wiring for activities list, signup, participant actions, and status alerts.
+  // Frontend wiring: activities list, signup form, participant actions, and status alerts.
   const activitiesList = document.getElementById("activities-list");
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
