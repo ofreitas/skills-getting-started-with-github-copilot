@@ -110,7 +110,7 @@ section h3 {
 }
 
 .participant-email {
-  /* Keep long emails from pushing the action button out of view in flex rows. */
+  /* Keep long emails from pushing the action button out of view in flex layouts. */
   flex: 1;
   min-width: 0;
   overflow-wrap: anywhere;
