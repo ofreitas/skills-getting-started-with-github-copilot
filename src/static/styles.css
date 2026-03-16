@@ -110,10 +110,13 @@ section h3 {
 }
 
 .participant-email {
+  flex: 1;
+  min-width: 0;
   overflow-wrap: anywhere;
 }
 
 .delete-participant-btn {
+  flex-shrink: 0;
   width: 30px;
   height: 30px;
   display: inline-flex;

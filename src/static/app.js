@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
 
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   function formatParticipantsList(activityName, participants) {
     if (!participants.length) {
       return '<li class="participant-empty">No participants yet</li>';
@@ -11,21 +20,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return participants
       .map(
-        (participant) => `
+        (participant) => {
+          const safeParticipant = escapeHtml(participant);
+          const safeActivityName = escapeHtml(activityName);
+
+          return `
           <li class="participant-item">
-            <span class="participant-email">${participant}</span>
+            <span class="participant-email">${safeParticipant}</span>
             <button
               type="button"
               class="delete-participant-btn"
-              data-activity="${activityName}"
-              data-email="${participant}"
-              aria-label="Remove ${participant} from ${activityName}"
+              data-activity="${safeActivityName}"
+              data-email="${safeParticipant}"
+              aria-label="Remove ${safeParticipant} from ${safeActivityName}"
               title="Unregister participant"
             >
               🗑
             </button>
           </li>
-        `
+        `;
+        }
       )
       .join("");
   }
